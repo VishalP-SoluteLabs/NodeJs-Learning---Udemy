@@ -1,0 +1,42 @@
+<%- include("../partials/header"); -%>
+
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include("../partials/navigation"); -%>
+
+    <main>
+        <% if(product.length > 0){ %>
+        <div class="grid">
+            <% for(products of product) {%>
+            <article class="card product-item">
+                <header class="card__header">
+                    <h1 class="product__title"><%= products.title %></h1>
+                </header>
+                <div class="image">
+                    <img src="/<%= products.imgUrl %>" alt="<%= products.title %>">
+                </div>
+                <div class="card__content">
+                    <h2 class="product__price">₹<%= products.price %></h2>
+                    <p class="product__description"><%= products.description %></p>
+                </div>
+                <div class="card__actions">
+                    <a href="/admin/edit-product/<%= products._id %>?edit=true" class="btn">Edit</a> 
+             
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>"> 
+                        <input type="hidden" value="<%= products._id %>" name="productId">
+                        <button class="btn danger" onclick="deleteProduct(this)" type="button">Delete</button>
+                   
+                    
+                </div>
+            </article>
+            <% } %>
+        </div>
+        <% }else{ %>
+        <h1>No Products found</h1>
+        <% } %>
+    </main>
+    <%- include("../partials/footer") -%>
+
+    <script src="/js/admin.js"></script>
