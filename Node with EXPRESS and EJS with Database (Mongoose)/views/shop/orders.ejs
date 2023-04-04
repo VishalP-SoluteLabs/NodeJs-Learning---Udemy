@@ -1,0 +1,52 @@
+<%- include("../partials/header"); -%>
+<link rel="stylesheet" href="/css/products.css">
+<link rel="stylesheet" href="/css/orders.css">
+</head>
+
+<body>
+    <%- include("../partials/navigation"); -%>
+    <main>
+        <% if (orders.length <= 0) { %>
+        <h1>Nothing there!</h1>
+        <% } else { %>
+        <ul class="orders">
+            
+            <% orders.forEach(order => { %>
+            <li class="orders__item">
+                <h1>Order - # <%= order._id %>  -  <a href="/orders/<%= order._id %>">Invoice</a></h1>
+                <ul class="orders__products">
+                    <% let totalItem = 0, totalPrice = 0; %>
+                    <% order.products.forEach(p => { %>
+                        <% totalItem += p.quantity; %>
+                        <% totalPrice += (p.product.price * p.quantity); %>
+                    <li class="orders__products-item">
+                        <%= p.product.title %> 
+                        (<%= p.quantity %>) - ₹<%= p.product.price %>
+                         <img class="orders__products-item-img" src="<%= p.product.imgUrl %>" alt="<%= p.product.title %>" ></li>                    
+                    <% }); %>
+ 
+                    <div class="order-total">
+                        <% if (totalItem === 1) { %>
+                            <h3 class="order-total-items">Total: <%= totalItem %> Item </h3>
+                        <% } else { %>                        
+                        <h3 class="order-total-items">Total: <%= totalItem %> Items </h3>
+                        <% } %>
+                        <div class="order-total-xyz">
+                            <h3 class="order-total-cost"> Cost : ₹<%= totalPrice %></h3>
+                            <!-- <button class="btn">checkout</button> -->
+                        </div>
+                        
+                    </div>
+
+                    
+                </ul>
+
+                
+                
+            </li>
+            <% }); %>
+        </ul>
+        <% } %>
+    </main>
+
+    <%- include("../partials/footer") -%>
