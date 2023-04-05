@@ -1,0 +1,10 @@
+Skip & Limit with SQL
+When using MongoDB, you can use skip() and limit() as shown in the last lecture.
+
+But how would that work in SQL?
+
+Here's how you would implement pagination in SQL code: https://stackoverflow.com/questions/3799193/mysql-data-best-way-to-implement-paging
+
+To quickly sum it up: The LIMIT command allows you to restrict the amount of data points you fetch, it's your limit() equivalent. Combined with the OFFSET command (which replaces skip()), you can control how many items you want to fetch and how many you want to skip.
+
+When using Sequelize, the official docs describe how to add pagination: https://sequelize.org/master/manual/model-querying-basics.html
