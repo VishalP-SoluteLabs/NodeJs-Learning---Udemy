@@ -1,0 +1,41 @@
+<%- include("../partials/header"); -%>
+
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include("../partials/navigation"); -%>
+
+    <main>
+        <% if(prods.length > 0){ %>
+        <div class="grid">
+            <% for(products of prods) {%>
+            <article class="card product-item">
+                <header class="card__header">
+                    <h1 class="product__title"><%= products.title %></h1>
+                </header>
+                <div class="image">
+                    <img src="<%= products.imgUrl %>" alt="<%= products.title %>">
+                </div>
+                <div class="card__content">
+                    <h2 class="product__price">₹<%= products.price %></h2>
+                    <p class="product__description"><%= products.description %></p>
+                </div>
+                <div class="card__actions">
+                    <a href="/products/<%= products._id %>" class="btn">Details</a>
+                    
+                    <%- include('../partials/add-to-cart') %>
+                    
+                </div>
+            </article>
+            
+            <% } %>
+        </div>
+        
+        <%- include("../partials/pagination") -%>
+        
+        <% }else{ %>
+        <h1>No Products found</h1>
+        <% } %>
+    </main>
+    <%- include("../partials/footer") -%>
