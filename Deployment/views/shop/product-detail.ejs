@@ -1,0 +1,19 @@
+<%- include("../partials/header"); -%>
+
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include("../partials/navigation"); -%>
+    <main class="centered">
+        <h1><%= product.title %></h1>
+        <hr>
+        <div class="image">
+            <img src="<%= product.imgUrl %>" alt="<%= product.title %>">
+        </div>
+        <h2>₹<%= product.price %></h2>
+        <p><%= product.description %></p>
+                <%- include('../partials/add-to-cart') %>
+              
+    </main>
+    <%- include('../partials/footer.ejs') %>

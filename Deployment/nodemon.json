@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "admin-vishal",
+        "MONGO_PASSWORD": "OiXu0VqZrnApu31L",
+        "MONGO_DEFAULT_DATABASE": "shop-mongoose-File-handling",
+        "STRIPE_PVT_KEY": "sk_test_51MsNYxSHWhgqBRI1lauaz0k5nVX4Mhfcz5WKTlicMonwqwYtTwf0b8SNkwqsLv8PVJ3tN3MqUvqqBik3TU8Bkxkq00G14Xlnn9"
+    }
+}
